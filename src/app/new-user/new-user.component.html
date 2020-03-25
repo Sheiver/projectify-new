@@ -1,0 +1,88 @@
+<div class="create-page">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">Create User</li>
+    </ol>
+  </nav>
+  <div class="page-content">
+    <div class="row">
+      <div class="col col-md-4">
+        <img class="img-avatar" src="{{avatarLink}}">
+        <button mat-stroked-button class="change-img-button" color="primary" (click)="openDialog()">Change Image</button>
+      </div>
+
+      <div class="col col-md-8">
+
+        <form class="create-form" [formGroup]="exampleForm" novalidate (ngSubmit)="onSubmit(exampleForm.value)">
+
+          <div class="form-group">
+            <mat-form-field class="input-style">
+              <mat-label>Name</mat-label>
+              <input matInput placeholder="Ex. John" class="form-control" formControlName="name">
+            </mat-form-field>
+            <ng-container *ngFor="let validation of validationMessages.name">
+              <mat-error *ngIf="exampleForm.get('name').hasError(validation.type) && (exampleForm.get('name').dirty || exampleForm.get('name').touched)">{{validation.message}}</mat-error>
+            </ng-container>
+          </div>
+
+          <div class="form-group">
+            <mat-form-field class="input-style">
+              <mat-label>Surname</mat-label>
+              <input matInput placeholder="Ex. Doe" class="form-control" formControlName="surname">
+            </mat-form-field>
+            <ng-container *ngFor="let validation of validationMessages.surname">
+              <mat-error *ngIf="exampleForm.get('surname').hasError(validation.type) && (exampleForm.get('surname').dirty || exampleForm.get('surname').touched)">{{validation.message}}</mat-error>
+            </ng-container>
+          </div>
+
+          <div class="form-group">
+            <mat-form-field class="input-style">
+              <mat-label>Email</mat-label>
+              <input matInput type="email" placeholder="Ex. pat@example.com" class="form-control" formControlName="email">
+            </mat-form-field>
+            <ng-container *ngFor="let validation of validationMessages.email">
+              <mat-error *ngIf="exampleForm.get('email').hasError(validation.type) && (exampleForm.get('email').dirty || exampleForm.get('email').touched)">{{validation.message}}</mat-error>
+            </ng-container>
+          </div>
+
+          <div class="form-group">
+            <mat-form-field class="input-style">
+              <mat-label>Age</mat-label>
+              <input matInput type="number" min="0" max="100" placeholder="Ex. 20" class="form-control" formControlName="age">
+            </mat-form-field>
+            <ng-container *ngFor="let validation of validationMessages.age">
+              <mat-error *ngIf="exampleForm.get('age').hasError(validation.type) && (exampleForm.get('age').dirty || exampleForm.get('age').touched)">{{validation.message}}</mat-error>
+            </ng-container>
+          </div>
+
+          <div class="form-group">
+            <mat-form-field class="input-style">
+              <mat-label>Gender</mat-label>
+              <input matInput placeholder="Ex. Male" class="form-control" formControlName="gender">
+            </mat-form-field>
+            <ng-container *ngFor="let validation of validationMessages.gender">
+              <mat-error *ngIf="exampleForm.get('gender').hasError(validation.type) && (exampleForm.get('gender').dirty || exampleForm.get('gender').touched)">{{validation.message}}</mat-error>
+            </ng-container>
+          </div>
+
+          <div class="form-group">
+            <mat-form-field class="input-style">
+              <mat-label>Nationality</mat-label>
+              <input matInput placeholder="Ex. American" class="form-control" formControlName="nationality">
+            </mat-form-field>
+            <ng-container *ngFor="let validation of validationMessages.nationality">
+              <mat-error *ngIf="exampleForm.get('nationality').hasError(validation.type) && (exampleForm.get('nationality').dirty || exampleForm.get('nationality').touched)">{{validation.message}}</mat-error>
+            </ng-container>
+          </div>
+
+          <div class="row submit-button-container">
+            <div class="col-md-4">
+              <button mat-raised-button class="submit-button" color="primary" type="submit" [disabled]="!exampleForm.valid">Create</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
