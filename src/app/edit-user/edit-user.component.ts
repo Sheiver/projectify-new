@@ -81,12 +81,12 @@ export class EditUserComponent implements OnInit {
   }
 
   onSubmit(value) {
-    value.avatar = this.item.avatar;
+    value.photoURL = this.item.avatar;
     value.age = Number(value.age);
     this.firebaseService.updateUser(this.item.id, value)
       .then(
         res => {
-          this.router.navigate(['/home']);
+          this.router.navigate(['/']);
         }
       );
   }
@@ -95,7 +95,7 @@ export class EditUserComponent implements OnInit {
     this.firebaseService.deleteUser(this.item.id)
       .then(
         res => {
-          this.router.navigate(['/home']);
+          this.router.navigate(['/']);
         },
         err => {
           console.log(err);
@@ -104,6 +104,6 @@ export class EditUserComponent implements OnInit {
   }
 
   cancel() {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/']);
   }
 }

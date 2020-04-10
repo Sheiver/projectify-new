@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {AuthService} from './services/auth.service';
+import {ChatService} from './services/chat.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'projectify-new';
+
+  constructor(public auth: AuthService, public cs: ChatService) {}
 }

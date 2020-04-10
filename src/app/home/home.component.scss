@@ -1,39 +1,33 @@
-.filter-by-age {
-  color: #6c757d;
+.home-page {
 
-  .title {
-    align-self: center;
+  padding: 20px 60px;
+
+  ul {
+    list-style-type: none;
+    padding: 0;
   }
 
-  .age-slider {
-    width: 85%;
+  li {
+    margin-bottom: 6px;
   }
-}
 
-.users-list {
-  padding: 40px 60px;
-
-  .image-col {
-    text-align:center;
-
-    .image {
-      border-radius: 50%;
-      width: 100px;
-      height: 100px;
-    }
-  }
-  .text-col {
-    margin: auto 0px;
-  }
-  .actions-col {
+  .banner {
     text-align: center;
-    margin: auto 0px;
+    background: #e9ecef;
+    padding: 30px;
+  }
 
-    .action {
-      line-height: 1;
-    }
-    .icon {
-      font-size: 20px;
-    }
+  img {
+    border-radius: 50%;
+    display: block;
+    margin: auto;
+  }
+
+  button {
+    margin: 10px;
+  }
+
+  h1 {
+    align-self: center;
   }
 }

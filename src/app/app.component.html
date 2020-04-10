@@ -7,11 +7,28 @@
 <!-- * * * * * * * to get started with your project! * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
+<mat-toolbar>
+  <span>WeChat</span>
+  <span class="fill"></span>
+  <div *ngIf="(auth.user$ | async) as user; else login">
+    <span class="display-name">{{ user.displayName }}</span>
+    <img [src]="user.photoURL" width="50px">
+  </div>
+  <ng-template #login>
+    <button class="btn btn-outline-primary action" (click)="auth.googleSignIn()">Login with Google</button>
+  </ng-template>
+<!--  <span>Right Aligned Text</span>-->
+</mat-toolbar>
 <div class="page-container">
   <div class="side-bar">
     <ul class="nav flex-column">
       <li class="nav-item">
-        <a class="nav-link active" routerLink="home">
+        <a class="nav-link active" routerLink="/">
+          <ion-icon name="home-outline"></ion-icon>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="contacts-home">
           <ion-icon name="list"></ion-icon>
         </a>
       </li>
@@ -19,6 +36,13 @@
         <a class="nav-link" routerLink="new-user">
           <ion-icon name="add"></ion-icon>
         </a>
+      </li>
+      <li>
+        <div *ngIf="(auth.user$ | async) as user">
+          <a class="nav-link">
+          <ion-icon name="log-out-outline" (click)="auth.signOut()">Sign Out</ion-icon>
+          </a>
+        </div>
       </li>
     </ul>
   </div>

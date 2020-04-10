@@ -1,0 +1,50 @@
+.chat {
+  padding: 10px;
+  margin: 5px auto 80px;
+  width: 100%;
+}
+
+.msg {
+  display: flex;
+  align-items: flex-start;
+  margin-left: auto;
+  order: 2;
+  text-align: left;
+  border-bottom: 1px solid #e9e9e9;
+  padding: 10px;
+  width: 90vw;
+  font-size: 1.3em;
+  animation-delay: 0ms;
+  animation-duration: 600ms;
+
+  .user {
+    margin-right: 10px;
+    min-width: 100px;
+    border-right: 1px solid #e9e9e9;
+  }
+}
+
+.form {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+  padding: 10px 50px;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.form-field {
+  padding-left: 50px;
+  padding-right: 20px;
+  width: 300px;
+}
+
+.submit {
+  margin: 10px;
+  width: 100px;
+}
+
+.fill {
+  flex: 1 1 auto;
+}
