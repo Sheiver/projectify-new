@@ -31,9 +31,6 @@ export class EditUserComponent implements OnInit {
     ],
     gender: [
       { type: 'required', message: 'Gender is required.' }
-    ],
-    nationality: [
-      { type: 'required', message: 'Nationality is required.' }
     ]
   };
 
@@ -62,8 +59,7 @@ export class EditUserComponent implements OnInit {
       surname: [this.item.surname, Validators.required],
       email: [this.item.email, Validators.required],
       age: [this.item.age, Validators.required],
-      gender: [this.item.gender, Validators.required],
-      nationality: [this.item.nationality, Validators.required],
+      gender: [this.item.gender, Validators.required]
     });
   }
 
@@ -81,12 +77,18 @@ export class EditUserComponent implements OnInit {
   }
 
   onSubmit(value) {
-    value.photoURL = this.item.avatar;
+    if (this.item.avatar) {
+      value.photoURL = this.item.avatar;
+    } else {
+      value.photoURL = this.item.photoURL;
+    }
     value.age = Number(value.age);
+    value.uid = this.item.uid;
+    value.displayName = this.item.displayName;
     this.firebaseService.updateUser(this.item.id, value)
       .then(
         res => {
-          this.router.navigate(['/']);
+          this.router.navigate(['/contacts-home']);
         }
       );
   }
@@ -95,7 +97,7 @@ export class EditUserComponent implements OnInit {
     this.firebaseService.deleteUser(this.item.id)
       .then(
         res => {
-          this.router.navigate(['/']);
+          this.router.navigate(['/contacts-home']);
         },
         err => {
           console.log(err);
@@ -104,6 +106,6 @@ export class EditUserComponent implements OnInit {
   }
 
   cancel() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/contacts-home']);
   }
 }

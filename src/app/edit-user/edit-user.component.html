@@ -7,7 +7,10 @@
   <div class="page-content">
     <div class="row">
       <div class="col col-md-4">
-        <img class="img-avatar" [src]="item.avatar">
+        <img *ngIf="item.avatar; else photo" class="img-avatar" [src]="item.avatar">
+      <ng-template #photo>
+        <img class="img-avatar" [src]="item.photoURL">
+      </ng-template>
         <button mat-stroked-button class="change-img-button" color="primary" (click)="openDialog()">Change Avatar</button>
       </div>
       <div class="col col-md-8">
@@ -29,6 +32,24 @@
             </mat-form-field>
             <ng-container *ngFor="let validation of validationMessages.surname">
               <mat-error *ngIf="exampleForm.get('surname').hasError(validation.type) && (exampleForm.get('surname').dirty || exampleForm.get('surname').touched)">{{validation.message}}</mat-error>
+            </ng-container>
+          </div>
+
+          <div class="form-group">
+            <mat-form-field class="input-style">
+              <input matInput placeholder="Email" class="form-control" formControlName="email">
+            </mat-form-field>
+            <ng-container *ngFor="let validation of validationMessages.email">
+              <mat-error *ngIf="exampleForm.get('email').hasError(validation.type) && (exampleForm.get('email').dirty || exampleForm.get('email').touched)">{{validation.message}}</mat-error>
+            </ng-container>
+          </div>
+
+          <div class="form-group">
+            <mat-form-field class="input-style">
+              <input matInput placeholder="Gender" class="form-control" formControlName="gender">
+            </mat-form-field>
+            <ng-container *ngFor="let validation of validationMessages.gender">
+              <mat-error *ngIf="exampleForm.get('gender').hasError(validation.type) && (exampleForm.get('gender').dirty || exampleForm.get('gender').touched)">{{validation.message}}</mat-error>
             </ng-container>
           </div>
 
